@@ -1,0 +1,9 @@
+declare module "eth-lib";
+declare module "jayson";
+declare module "jayson/promise";
+declare module "password-prompt";
+declare module "reactstrap";
+declare module "mailchimp";
+declare module "webcoin";
+declare module "webcoin-bitcoin";
+declare module "bitcoin";

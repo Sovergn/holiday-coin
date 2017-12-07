@@ -1,0 +1,12 @@
+{
+  "type": "sqlite",
+  "database": "./db.sqlite",
+  "synchronize": false,
+  "logging": true,
+  "entities": [
+    "src/entity/**/*.ts"
+  ],
+  "subscribers": [
+    "node_modules/typeorm-encrypted/lib/**/*.js"
+  ]
+}
