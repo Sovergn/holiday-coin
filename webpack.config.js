@@ -1,7 +1,7 @@
-const Webpack = require("Webpack");
+const Webpack = require("webpack");
 const Path = require("path");
-const HtmlWebpackPlugin = require("html-Webpack-plugin");
-const ExtractTextPlugin = require("extract-text-Webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const isProduction = process.env.NODE_ENV === "production";
 const outPath = Path.join(__dirname, "./build/app");

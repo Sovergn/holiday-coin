@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Form, InputGroup, Input, Label } from "reactstrap";
-import CurrencyInput from "react-currency-Input";
+import CurrencyInput from "react-currency-input";
 import * as request from "superagent";
 import { Card, CardText, CardTitle } from "../Card";
 import { DonateCryptoCurrencyButton } from "./DonateCryptoCurrencyButton";
