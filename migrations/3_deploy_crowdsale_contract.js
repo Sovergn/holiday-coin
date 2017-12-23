@@ -3,7 +3,7 @@ var HolidayCoinCrowdSale = artifacts.require("./HolidayCoinCrowdSale.sol");
 var VoteManager = artifacts.require("./VoteManager.sol");
 
 module.exports = function (deployer) {
-  return deployer.deploy(HolidayCoin).then(function() {
-    return deployer.deploy(VoteManager, HolidayCoin.address);
-  });
+  let start = Math.floor(Date.now() / 1000) + 120;
+  let end = start + 24*60*60;
+  return deployer.deploy(HolidayCoinCrowdSale, start, end, 10**16, VoteManager.address, HolidayCoin.address);
 };

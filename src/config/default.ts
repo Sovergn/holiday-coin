@@ -4,13 +4,13 @@ const DEFAULTS = {
     "port": 8000
   },
   "secret": null,
-  "eth": {
-    "privateKey": null,
-    "address": null
-  },
   "web3": {
     "defaultAccount": null,
-    "accounts": []
+    "accounts": [],
+    "options": {
+      "gas": 500000,
+      "gasPrice": "20000000000"
+    }
   },
   "convert": {
     "btc": 0.01,

@@ -9,7 +9,7 @@ const web3 = client();
 const Contracts = ContractDefinitionLoader({
   web3: web3,
   contractDefinitions: ContractDefinitions,
-  options: config.get("web3")
+  options: config.get("web3:options")
 });
 
 export { web3, ContractDefinitions, Contracts };

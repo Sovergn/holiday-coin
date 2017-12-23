@@ -13,8 +13,15 @@ export default async function USDToHolidayCoinConverter(): Promise<void> {
     relations: ["claim"]
   });
   for (let convertible of convertibles) {
-    let txid = await Contracts.HolidayCoinCrowdSale.methods.assignTokens(convertible.claim.address, convertible.amount*10**18).send({ from: config.get("web3:defaultAccount") });
-    console.log("Converting USD to SHC", txid);
+    try {
+      let txid = await Contracts.HolidayCoinCrowdSale.methods.assignTokens(convertible.claim.address, convertible.amount*10**18).send({
+        from: config.get("web3:defaultAccount")
+      });
+      console.log("Converting USD to SHC", txid);
+    } catch(err) {
+      console.error(err);
+      throw err;
+    }
   }
 
   for (let convertible of convertibles) {

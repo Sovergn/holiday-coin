@@ -5,7 +5,8 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const isProduction = process.env.NODE_ENV === "production";
 const outPath = Path.join(__dirname, "./build/app");
-const sourcePath = Path.join(__dirname, "./src/app");
+const sourcePath = Path.join(__dirname, "./src");
+const appSourcePath = Path.join(sourcePath, "app");
 const hotMiddleware = "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true";
 
 module.exports = {
@@ -13,7 +14,7 @@ module.exports = {
     pay: [
       "react-hot-loader/patch",
       hotMiddleware,
-      Path.join(sourcePath, "pay", "browser.tsx")
+      Path.join(appSourcePath, "pay", "browser.tsx")
     ],
     vendor: [
       "react",
@@ -46,7 +47,7 @@ module.exports = {
     }, {
       test: /\.scss$/,
       use: ["style-loader", "css-loader", "sass-loader"],
-      include: [ sourcePath ]
+      include: [ appSourcePath ]
     }, {
       test: /\.less$/,
       use: ["style-loader", "css-loader", "less-loader"],
@@ -59,7 +60,7 @@ module.exports = {
           "react-hot-loader/webpack",
           "awesome-typescript-loader"
         ]
-    }]
+    }],
   },
   plugins: [
     new Webpack.HotModuleReplacementPlugin(),

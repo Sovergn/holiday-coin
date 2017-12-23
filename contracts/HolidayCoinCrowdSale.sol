@@ -35,7 +35,7 @@ contract HolidayCoinCrowdSale is Ownable, Crowdsale {
 
   function assignTokensAndVote(address beneficiary, uint256 tokens, uint8 charity) public onlyOwner {
     assignTokens(beneficiary, tokens);
-    VoteManager(wallet).vote(charity);
+    VoteManager(wallet).voteFor(beneficiary, charity);
   }
 
   function buyAndVote(address beneficiary, uint8 charity) public payable {
@@ -43,7 +43,7 @@ contract HolidayCoinCrowdSale is Ownable, Crowdsale {
     VoteManager(wallet).vote(charity);
   }
 
-  function reclaimTokenContract(address beneficiary, uint8 charity) public onlyOwner {
+  function reclaimTokenContract() public onlyOwner {
     token.transferOwnership(msg.sender);
   }
 }

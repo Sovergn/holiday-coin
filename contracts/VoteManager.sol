@@ -14,7 +14,7 @@ contract VoteManager is Ownable {
   }
 
   address token;
-  // address[] public admins;
+  address[] public admins;
   Charity[] public charities;
   address[] voters;
   mapping(address => bool) votersLookup;
@@ -24,14 +24,14 @@ contract VoteManager is Ownable {
 
   //// Modifiers -- Start
 
-  // modifier onlyAdmin() {
-  //   bool isAdmin = false;
-  //   for (uint8 i = 0; i < admins.length && !isAdmin; i++) {
-  //     isAdmin = msg.sender == owner;
-  //   }
-  //   require(isAdmin);
-  //   _;
-  // }
+  modifier onlyAdmin() {
+    bool isAdmin = false;
+    for (uint8 i = 0; i < admins.length && !isAdmin; i++) {
+      isAdmin = msg.sender == admins[i];
+    }
+    require(isAdmin);
+    _;
+  }
 
   modifier onlyTokenHolder() {
     require(MintableToken(token).balanceOf(msg.sender) > 0);
@@ -41,10 +41,10 @@ contract VoteManager is Ownable {
   //// Modifiers -- End
   //// Administration -- Start
 
-  // function addAdmin(address admin) public onlyOwner {
-  //   admins.push(admin);
-  //   AdminAdded(admin);
-  // }
+  function addAdmin(address admin) public onlyOwner {
+    admins.push(admin);
+    AdminAdded(admin);
+  }
 
   function addCharity(string name, address payto) public onlyOwner {
     charities.push(Charity(name, payto));
@@ -59,14 +59,18 @@ contract VoteManager is Ownable {
     charities.push(Charity("Abstain Charity", address(0)));
   }
 
-  function vote(uint8 charity) public onlyTokenHolder {
+  function voteFor(address beneficiary, uint8 charity) public onlyAdmin {
     require(charity <= charities.length);
     require(charity > 0);
-    if (!votersLookup[msg.sender]) {
-      votersLookup[msg.sender] = true;
-      voters.push(msg.sender);
+    if (!votersLookup[beneficiary]) {
+      votersLookup[beneficiary] = true;
+      voters.push(beneficiary);
     }
-    votes[msg.sender] = charity;
+    votes[beneficiary] = charity;
+  }
+
+  function vote(uint8 charity) public onlyTokenHolder {
+    voteFor(msg.sender, charity);
   }
 
   function tallyVotes() public onlyOwner {

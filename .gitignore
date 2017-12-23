@@ -64,3 +64,6 @@ typings/
 config.json
 config\.json
 config.*.json
+
+# dist
+build/app

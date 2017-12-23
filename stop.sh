@@ -1,3 +1,3 @@
 #!/bin/sh
-docker kill holiday-coin;
-docker rm holiday-coin;
+docker kill holiday-coin-full;
+docker rm holiday-coin-full;
