@@ -9,7 +9,6 @@ services:
   static:
     build: ./web
     ports:
-      - "80:80"
       - "8443:8443"
     volumes:
       - /etc/letsencrypt:/etc/letsencrypt
