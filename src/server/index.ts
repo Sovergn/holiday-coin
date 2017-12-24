@@ -18,7 +18,6 @@ const Flash = require("connect-flash");
 const FileStore = require("session-file-store")(session);
 
 const PROD = process.env.NODE_ENV === "production";
-console.log(process.env.NODE_ENV)
 
 var app = express();
 

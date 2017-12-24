@@ -64,22 +64,6 @@ export class DonateEthereumForm extends React.Component<DonateEthereumForm.Props
           <Label>Address</Label>
           <Input type="text" name="address" id="address" value={this.state.address} onChange={e => this.setState({ address: e.target.value })} placeholder="Example: 1289af838871cbd1fa" />
         </InputGroup>
-        <InputGroup>
-          <Label>First Name</Label>
-          <Input type="text" id="firstname" name="firstname" value={this.state.firstName} onChange={e => this.setState({ firstName: e.target.value })} />
-        </InputGroup>
-        <InputGroup>
-          <Label>Last Name</Label>
-          <Input type="text" id="lastname" name="lastname" value={this.state.lastName} onChange={e => this.setState({ lastName: e.target.value })} />
-        </InputGroup>
-        <InputGroup>
-          <Label>Country</Label>
-          <Input type="text" id="country" name="country" value={this.state.country} onChange={e => this.setState({ country: e.target.value })} />
-        </InputGroup>
-        <InputGroup>
-          <Label>State</Label>
-          <Input type="text" id="state" name="state" value={this.state.state} onChange={e => this.setState({ state: e.target.value })} />
-        </InputGroup>
         <DonateCryptoCurrencyButton email={this.state.email} onSubmit={this.submit} />
       </Form>
     );

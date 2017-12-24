@@ -44,8 +44,12 @@ export class PayForms extends React.Component<PayForms.Props, PayForms.State> {
         <TabContent activeTab={this.state.tab}>
           <TabPane tabId={PayFormsTab.CC}>
             <div className="fifteen columns">
-              <div className="six columns text-center">
-                <p>Donations accepted by credit card</p>
+              <div className="six columns">
+                <p>Donations are accepted by credit card. Simply fill out the form to the right and click "Donate" and you'll be prompted with directions for payment.</p>
+                <p>After donating, you'll be assigned an address with Holiday Coin based on the amount you've donated.</p>
+                <p>Currently, you'll be rewarded 1 Holiday Coin for every dollar (USD) you donate.</p>
+                <br />
+                <br />
               </div>
               <div className="eight columns">
                 <DonateCreditCardForm />
@@ -56,8 +60,13 @@ export class PayForms extends React.Component<PayForms.Props, PayForms.State> {
           <TabPane tabId={PayFormsTab.BITCOIN}>
             <div className="fifteen columns">
               <div className="six columns text-center">
-                <p>Donations accepted by Bitcoin at <small>0x1BEX4AfyY53mWeFfhbJA1uE5nBa8YbRhjh</small></p>
                 <img src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=1BEX4AfyY53mWeFfhbJA1uE5nBa8YbRhjh" className="qr-code" />
+                <small>0x1BEX4AfyY53mWeFfhbJA1uE5nBa8YbRhjh</small>
+                <br />
+                <br />
+                <p className="text-left">Send bitcoin to the address above and you'll be awarded Holiday Coin with a new address. You can claim that address by filling out the form to the right.</p>
+                <br />
+                <br />
               </div>
               <div className="eight columns">
                 <DonateBitcoinForm />
@@ -68,8 +77,13 @@ export class PayForms extends React.Component<PayForms.Props, PayForms.State> {
           <TabPane tabId={PayFormsTab.ETHEREUM}>
             <div className="fifteen columns">
               <div className="six columns text-center">
-                <p>Donations accepted by Ethereum at <small>0xb0c0cafc9bc1d9036fa43b5826cb7d3cfa9437cc</small></p>
                 <img src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=b0c0cafc9bc1d9036fa43b5826cb7d3cfa9437cc" className="qr-code" />
+                <small>0xb0c0cafc9bc1d9036fa43b5826cb7d3cfa9437cc</small>
+                <br />
+                <br />
+                <p className="text-left">Send ether to address above and you'll be awarded Holiday Coin at the address you've sent from. It is a standard ERC20 token, so you can use your favorite ERC20 wallet to manage it.</p>
+                <br />
+                <br />
               </div>
               <div className="eight columns">
                 <DonateEthereumForm />

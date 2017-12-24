@@ -65,22 +65,6 @@ export class DonateCreditCardForm extends React.Component<DonateCreditCardForm.P
           <Label>Donation Amount</Label>
           <CurrencyInput className="form-control" value={this.state.amount} onChangeEvent={e => this.setState({ amount: e.target.value })} />
         </InputGroup>
-        <InputGroup>
-          <Label>First Name</Label>
-          <Input type="text" id="firstname" name="firstname" value={this.state.firstName} onChange={e => this.setState({ firstName: e.target.value })} />
-        </InputGroup>
-        <InputGroup>
-          <Label>Last Name</Label>
-          <Input type="text" id="lastname" name="lastname" value={this.state.lastName} onChange={e => this.setState({ lastName: e.target.value })} />
-        </InputGroup>
-        <InputGroup>
-          <Label>Country</Label>
-          <Input type="text" id="country" name="country" value={this.state.country} onChange={e => this.setState({ country: e.target.value })} />
-        </InputGroup>
-        <InputGroup>
-          <Label>State</Label>
-          <Input type="text" id="state" name="state" value={this.state.state} onChange={e => this.setState({ state: e.target.value })} />
-        </InputGroup>
         <DonateCreditCardButton email={this.state.email} amount={this.state.amount} onSubmit={this.submit} />
       </Form>
     );
