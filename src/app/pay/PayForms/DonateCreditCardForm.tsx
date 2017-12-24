@@ -4,6 +4,7 @@ import { Token } from "react-stripe-checkout";
 import CurrencyInput from "react-currency-input";
 import * as request from "superagent";
 import { Card, CardText, CardTitle } from "../Card";
+import CharityInput from "../CharityInput";
 import { DonateCreditCardButton } from "./DonateCreditCardButton";
 
 export enum DonateCreditCardFormStatus {
@@ -18,10 +19,7 @@ export namespace DonateCreditCardForm {
     status: DonateCreditCardFormStatus;
     email: string;
     amount: string;
-    firstName: string;
-    lastName: string;
-    country: string;
-    state: string;
+    vote: string;
   }
 }
 
@@ -33,10 +31,7 @@ export class DonateCreditCardForm extends React.Component<DonateCreditCardForm.P
       status: DonateCreditCardFormStatus.EDITING,
       email: "",
       amount: "",
-      firstName: "",
-      lastName: "",
-      country: "",
-      state: ""
+      vote: "any"
     };
   }
 
@@ -65,6 +60,7 @@ export class DonateCreditCardForm extends React.Component<DonateCreditCardForm.P
           <Label>Donation Amount</Label>
           <CurrencyInput className="form-control" value={this.state.amount} onChangeEvent={e => this.setState({ amount: e.target.value })} />
         </InputGroup>
+        <CharityInput name="charity" id="charity" value={this.state.vote} onChange={e => this.setState({ vote: e.target.value })} />
         <DonateCreditCardButton email={this.state.email} amount={this.state.amount} onSubmit={this.submit} />
       </Form>
     );

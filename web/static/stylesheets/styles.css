@@ -67,6 +67,14 @@ input.btn:hover {
   width: 20em;
 }
 
+.input-group select.form-control {
+  border-radius: 2px;
+  display: inline-block;
+  padding: 6px 4px;
+  font: 13px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  height: 44px;
+}
+
 
 .donation-form {
   border-radius:3px;

@@ -21,7 +21,7 @@ export class DonateCreditCardButton extends React.Component<DonateCreditCardButt
 
     return (
       <StripeCheckout
-        stripeKey="pk_test_cQcfj8GqAtWobryPn1Vk6NlA"
+        stripeKey="pk_live_JNTF6EUOnYWEvOAN1oe0B3HK"
         currency="USD"
         name="Donate to Charity"
         description="Donate to charity and receive your Holiday Coins!"

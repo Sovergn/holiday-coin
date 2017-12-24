@@ -64,6 +64,3 @@ typings/
 config.json
 config\.json
 config.*.json
-
-# dist
-web/build

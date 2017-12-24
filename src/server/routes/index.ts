@@ -5,6 +5,7 @@ import * as routerUtils from "../utils/routes";
 interface IClaimRequest {
   body: {
     email: string;
+    vote: string;
     firstName?: string;
     lastName?: string;
     country?: string;
@@ -22,15 +23,12 @@ export default function loadRoutes (app: any): any {
   async function claim<T extends HolidayCoinClaim>(req: IClaimRequest, res: any, claim: T) {
     await getConnection();
 
-    let { email, firstName, lastName, country, state } = req.body;
+    let { email, vote } = req.body;
 
     try {
       let info = new Info();
       info.email = email;
-      info.firstName = firstName;
-      info.lastName = lastName;
-      info.country = country;
-      info.state = state;
+      info.vote = vote;
       claim.info = info;
 
       await claim.save();

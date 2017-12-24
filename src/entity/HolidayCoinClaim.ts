@@ -15,7 +15,8 @@ export abstract class HolidayCoinClaim extends BaseEntity {
 
   @Column({
     type: "varchar",
-    nullable: false
+    nullable: false,
+    unique: true
   })
   address: string;
 

@@ -3,6 +3,7 @@ import { Form, InputGroup, Input, Label } from "reactstrap";
 import CurrencyInput from "react-currency-input";
 import * as request from "superagent";
 import { Card, CardText, CardTitle } from "../Card";
+import CharityInput from "../CharityInput";
 import { DonateCryptoCurrencyButton } from "./DonateCryptoCurrencyButton";
 
 export enum DonateEthereumFormStatus {
@@ -17,10 +18,7 @@ export namespace DonateEthereumForm {
     status: DonateEthereumFormStatus;
     email: string;
     address: string;
-    firstName: string;
-    lastName: string;
-    country: string;
-    state: string;
+    vote: string;
   }
 }
 
@@ -32,10 +30,7 @@ export class DonateEthereumForm extends React.Component<DonateEthereumForm.Props
       status: DonateEthereumFormStatus.EDITING,
       email: "",
       address: "",
-      firstName: "",
-      lastName: "",
-      country: "",
-      state: ""
+      vote: "any"
     };
   }
 
@@ -64,6 +59,7 @@ export class DonateEthereumForm extends React.Component<DonateEthereumForm.Props
           <Label>Address</Label>
           <Input type="text" name="address" id="address" value={this.state.address} onChange={e => this.setState({ address: e.target.value })} placeholder="Example: 1289af838871cbd1fa" />
         </InputGroup>
+        <CharityInput name="charity" id="charity" value={this.state.vote} onChange={e => this.setState({ vote: e.target.value })} />
         <DonateCryptoCurrencyButton email={this.state.email} onSubmit={this.submit} />
       </Form>
     );
@@ -79,7 +75,7 @@ export class DonateEthereumForm extends React.Component<DonateEthereumForm.Props
 
     try {
       await new Promise((resolve, reject) => {
-        request.post("/btcclaim").send(form).end((err, response) => {
+        request.post("/ethclaim").send(form).end((err, response) => {
           if (err) return reject(err);
           return resolve(response);
         });

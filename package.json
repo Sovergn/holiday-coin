@@ -26,6 +26,7 @@
     "passport": "^0.4.0",
     "passport-http": "^0.3.0",
     "passport-local": "^1.0.0",
+    "pg": "^7.4.0",
     "react": "^15.6.2",
     "react-bitcoin-qr": "0.0.3",
     "react-currency-input": "^1.3.4",

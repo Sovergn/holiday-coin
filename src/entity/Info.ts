@@ -9,54 +9,9 @@ export class Info extends BaseEntity {
   email: string;
 
   @Column({
-    name: "first_name",
     type: "varchar",
-    nullable: true
-  })
-  firstName: string;
-
-  @Column({
-    name: "last_name",
-    type: "varchar",
-    nullable: true
-  })
-  lastName: string;
-
-  @Column({
-    type: "varchar",
-    nullable: true
-  })
-  country: string;
-
-  @Column({
-    type: "varchar",
-    nullable: true
-  })
-  state: string;
-
-  @Column({
-    name: "created_at",
-    type: "int",
     nullable: false
   })
-  createdAt: number;
-
-  @Column({
-    name: "updated_at",
-    type: "int",
-    nullable: false
-  })
-  updatedAt: number;
-
-  @BeforeUpdate()
-  updateListener() {
-    this.updatedAt = moment().unix();
-  }
-
-  @BeforeInsert()
-  insertListener() {
-    this.updatedAt = moment().unix();
-    this.createdAt = this.updatedAt;
-  }
+  vote: string;
 }
 

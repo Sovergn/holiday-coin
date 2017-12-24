@@ -16,7 +16,7 @@ export default async function CreditCardProcessor(): Promise<void> {
 
     try {
       let charge = await stripe.charges.create({
-        amount: tx.amount * 10,
+        amount: tx.amount * 100,
         description: "Donation",
         currency: "usd",
         source: tx.token,
@@ -43,6 +43,6 @@ export default async function CreditCardProcessor(): Promise<void> {
       }
     });
 
-    send("cc_processed", tx, [{ address: claim.info.email }]);
+    send("cc_processed", { tx: tx, address: claim.address }, [{ address: claim.info.email }]);
   }
 }
