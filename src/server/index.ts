@@ -21,9 +21,6 @@ const PROD = process.env.NODE_ENV === "production";
 
 var app = express();
 
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
-
 app.use(cookieParser());
 app.use(bodyParser.raw({
   limit: "10mb"

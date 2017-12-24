@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const isProduction = process.env.NODE_ENV === "production";
-const outPath = Path.join(__dirname, "./build/app");
+const outPath = Path.join(__dirname, "./web/build");
 const sourcePath = Path.join(__dirname, "./src");
 const appSourcePath = Path.join(sourcePath, "app");
 const hotMiddleware = "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true";

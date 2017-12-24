@@ -1,26 +1,26 @@
 FROM node:8.1.2-alpine
 
 USER root
-ENV NODE_ENV development
+ENV NODE_ENV production
 
 RUN apk add --no-cache --virtual .persistent-deps curl openssl make gcc g++ python py-pip git
-RUN npm install --silent --save-dev -g gulp-cli typescript node-gyp
+RUN npm install --silent -g gulp-cli typescript node-gyp
 
-RUN mkdir -p /var/www/holiday-coin/
-RUN chown node:node /var/www/holiday-coin/
+RUN mkdir -p /opt/holiday-coin/
+RUN chown node:node /opt/holiday-coin/
 
 USER node
-WORKDIR /var/www/holiday-coin/
+WORKDIR /opt/holiday-coin/
 
 COPY ./package*.json ./
 RUN npm install -ddd
+RUN npm install --no-save typescript ts-node @types/node web3-typescript-typings
 
 USER root
+
 COPY . ./
-RUN npm run build
 
 # Expose ports
 EXPOSE 8080
 
-ENV NODE_ENV production
 CMD node -r ts-node/register src/server

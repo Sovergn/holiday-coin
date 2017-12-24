@@ -1,0 +1,15 @@
+version: '3'
+services:
+  node:
+    build: .
+    environment:
+      - CONFIG_FILE=/tmp/holiday-coin/config.json
+    volumes:
+      - ~/.holiday-coin:/tmp/holiday-coin
+  static:
+    build: ./web
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt

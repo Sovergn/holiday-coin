@@ -1,6 +1,3 @@
-import * as React from "react";
-import { renderToString } from 'react-dom/server';
-import { PayForms } from "../../app/pay/PayForms";
 import { getConnection, Info, BitcoinClaim, EthereumClaim, CreditCardClaim, CreditCardTransaction, ValidationError } from "../../entity";
 import { HolidayCoinClaim } from "../../entity/HolidayCoinClaim";
 import * as routerUtils from "../utils/routes";
@@ -21,20 +18,6 @@ interface IClaimRequest {
 
 export default function loadRoutes (app: any): any {
   var router = routerUtils.loadRoutes(__dirname, "**/*.ts", app, ["index.ts"]);
-
-  router.get("/robots.txt", (req: any, res: any) => {
-    res.send("User-agent: *\nDisallow: /*?splash=*\n");
-  });
-
-  router.get("*", (req: any, res: any) => {
-    res.render("index", {
-      title: "Holiday Coin",
-      meta: {
-        description: ""
-      },
-      body: renderToString(<PayForms />)
-    });
-  });
 
   async function claim<T extends HolidayCoinClaim>(req: IClaimRequest, res: any, claim: T) {
     await getConnection();

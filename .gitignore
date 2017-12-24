@@ -66,4 +66,4 @@ config\.json
 config.*.json
 
 # dist
-build/app
+web/build
