@@ -1,32 +1,5 @@
 version: '3'
 services:
-  db:
-    image: postgres
-    restart: always
-    environment:
-      POSTGRES_USER: sovergn
-      POSTGRES_PASSWORD: sovergn
-    volumes:
-      - /mnt/volume-sfo2-02/pgdata:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-  node:
-    build: .
-    restart: always
-    environment:
-      - CONFIG_FILE=/tmp/holiday-coin/config.json
-      - TYPEORM_CONNECTION=postgres
-      - TYPEORM_HOST=db
-      - TYPEORM_USERNAME=sovergn
-      - TYPEORM_PASSWORD=sovergn
-      - TYPEORM_SYNCHRONIZE=true
-      - TYPEORM_LOGGING=true
-      - TYPEORM_ENTITIES=src/entity/**/*.ts
-      - TYPEORM_SUBSCRIBERS=node_modules/typeorm-encrypted/lib/**/*.js
-    volumes:
-      - ~/.holiday-coin:/tmp/holiday-coin
-    depends_on:
-      - db
   static:
     build: ./web
     restart: always
@@ -35,5 +8,3 @@ services:
       - "80:80"
     volumes:
       - /etc/letsencrypt:/etc/letsencrypt
-    depends_on:
-      - node
